@@ -7,11 +7,11 @@ pub fn valid(number: &str) -> bool {
     let mut iter = number.chars().rev();
     loop {
         match iter.next() {
-            Some(c) => checksum += checksum_modifier(c, true),
+            Some(c) => checksum += checksum_modifier_odd(c),
             None => break,
         }
         match iter.next() {
-            Some(c) => checksum += checksum_modifier(c, false),
+            Some(c) => checksum += checksum_modifier_even(c),
             None => break,
         }
     }
@@ -19,17 +19,17 @@ pub fn valid(number: &str) -> bool {
     return checksum%10 == 0
 }
 
-fn checksum_modifier(c: char, is_odd: bool) -> u32 {
+fn checksum_modifier_odd(c: char) -> u32 {
+    numeric_char_to_u32(c)
+}
+
+fn checksum_modifier_even(c: char) -> u32 {
     let n = numeric_char_to_u32(c);
-    if is_odd {
-        return n
+    let d = n * 2;
+    if d <= 9 {
+        return d;
     } else {
-        let d = n * 2;
-        if d <= 9 {
-            return d;
-        } else {
-            return d - 9;
-        }
+        return d - 9;
     }
 }
 
