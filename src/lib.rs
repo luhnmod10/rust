@@ -4,19 +4,31 @@
 pub fn valid(number: &str) -> bool {
     let mut checksum = 0;
 
-    let mut iter = number.chars().rev();
-    loop {
+    let mut iter = number.chars();
+
+    // If the number contains an odd number of digits then 
+    // the first digit is an 'odd' digit
+    if number.len() % 2 == 1 {
         match iter.next() {
             Some(c) => checksum += checksum_modifier_odd(c),
-            None => break,
+            None => return true, // Never reached
         }
+    }
+
+    // Iterate the rest of the number in pairs starting 
+    // with an 'even' number 
+    loop {
         match iter.next() {
             Some(c) => checksum += checksum_modifier_even(c),
             None => break,
         }
+        match iter.next() {
+            Some(c) => checksum += checksum_modifier_odd(c),
+            None => break,
+        }
     }
 
-    return checksum%10 == 0
+    checksum % 10 == 0
 }
 
 fn checksum_modifier_odd(c: char) -> u32 {
