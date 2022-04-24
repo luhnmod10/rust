@@ -29,6 +29,6 @@ fn test_valid() {
 
     for &(number, expected_result) in tests.iter() {
         let result = luhnmod10::valid(number);
-        assert!(result == expected_result, format!("valid({}) = {}, expected {}", number, result, expected_result));
+        assert!(result == expected_result, "valid({}) = {}, expected {}", number, result, expected_result);
     }
 }
