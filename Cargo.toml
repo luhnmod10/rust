@@ -7,3 +7,6 @@ description = "Fast and simple in-place implementation of the luhn (mod 10) algo
 homepage = "https://github.com/luhnmod10/rust"
 repository = "https://github.com/luhnmod10/rust"
 readme = "README.md"
+
+[dev-dependencies]
+proptest = "1.0.0"
