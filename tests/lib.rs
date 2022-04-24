@@ -24,11 +24,14 @@ fn test_valid() {
         ("4242424242424242675", true),
         ("000000018", true),
         ("99999999999999999999", true),
-        ("99999999999999999999999999999999999999999999999999999999999999999997", true),
+        (
+            "99999999999999999999999999999999999999999999999999999999999999999997",
+            true,
+        ),
     ];
 
     for &(number, expected_result) in tests.iter() {
         let result = luhnmod10::valid(number);
-        assert!(result == expected_result, "valid({}) = {}, expected {}", number, result, expected_result);
+        assert_eq!(result, expected_result, "valid({})", number);
     }
 }

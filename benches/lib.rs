@@ -1,6 +1,6 @@
 #![feature(test)]
-extern crate test;
 extern crate luhnmod10;
+extern crate test;
 
 #[bench]
 fn bench_valid(b: &mut test::Bencher) {
