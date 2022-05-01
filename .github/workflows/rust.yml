@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
   release:
+    types: [published]
 
 env:
   RUSTFLAGS: -D warnings
