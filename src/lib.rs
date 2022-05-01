@@ -16,7 +16,7 @@ pub fn valid(number: &str) -> bool {
         }
     }
 
-    return checksum % 10 == 0;
+    checksum % 10 == 0
 }
 
 fn checksum_modifier_odd(c: char) -> u32 {
